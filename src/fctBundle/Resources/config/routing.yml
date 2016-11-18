@@ -1,0 +1,15 @@
+generador_homepage:
+    path:     /
+    defaults: { _controller: fctBundle:Default:index }
+
+all_empresa:
+    path:     /empresa/all
+    defaults: { _controller: fctBundle:Empresa:all }
+
+nuevo_eventos:
+    path:     /empresa/nuevo
+    defaults: { _controller: fctBundle:Empresa:nuevo}
+
+all_alumno:
+    path:     /alumno/all
+    defaults: { _controller: fctBundle:Alumno:all }
