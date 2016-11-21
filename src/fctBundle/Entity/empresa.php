@@ -223,4 +223,45 @@ class empresa
     }
 
     
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->alumno = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add alumno
+     *
+     * @param \fctBundle\Entity\alumno $alumno
+     *
+     * @return empresa
+     */
+    public function addAlumno(\fctBundle\Entity\alumno $alumno)
+    {
+        $this->alumno[] = $alumno;
+
+        return $this;
+    }
+
+    /**
+     * Remove alumno
+     *
+     * @param \fctBundle\Entity\alumno $alumno
+     */
+    public function removeAlumno(\fctBundle\Entity\alumno $alumno)
+    {
+        $this->alumno->removeElement($alumno);
+    }
+
+    /**
+     * Get alumno
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlumno()
+    {
+        return $this->alumno;
+    }
 }
