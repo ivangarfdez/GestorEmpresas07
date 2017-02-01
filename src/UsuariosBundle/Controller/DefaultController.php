@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UsuariosBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 class DefaultController extends Controller
 {
     /**
@@ -15,8 +16,17 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('UsuariosBundle:Default:usuarios.html.twig');
+    }
+
+    /**
+     * @Route("/usuarios", name="usuarios")
+     */
+    public function usuariosAction()
+    {
         return $this->render('UsuariosBundle:Default:index.html.twig');
     }
+
 
     /**
      * @Route("/register", name="user_registration")
@@ -51,5 +61,24 @@ class DefaultController extends Controller
             'UsuariosBundle:Default:register.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+    /**
+     * @Route("/usuarios/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('UsuariosBundle:Default:login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ));
     }
 }
