@@ -22,6 +22,13 @@ security:
         admin:
             pattern: ^/admin
             http_basic: ~
+        usuarios:
+            pattern: ^/usuarios
+            anonymous: ~
+            provider: in_memory
+            form_login:
+                login_path: /usuarios/login
+                check_path: /usuarios/login
         main:
             anonymous: ~
             # activate different ways to authenticate
@@ -31,3 +38,4 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+           
